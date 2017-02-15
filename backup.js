@@ -5,7 +5,9 @@ var zlib = require('zlib');
 
 module.exports = function(config, done) {
     var primary = Dyno(config);
-    var s3 = new AWS.S3();
+    var s3 = new AWS.S3({
+        region: 'cn-north-1',
+    });
 
     var log = config.log || console.log;
     var scanOpts = config.hasOwnProperty('segment') && config.segments ?
@@ -22,7 +24,7 @@ module.exports = function(config, done) {
 
     var stringify = new stream.Transform({ objectMode: true });
     stringify._transform = function(record, enc, callback) {
-        var line = Dyno.serialize(record);
+        var line = JSON.stringify(record);
 
         setImmediate(function() {
             stringify.push(line + '\n');
