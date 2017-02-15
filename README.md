@@ -1,3 +1,9 @@
+## Huiseoul Usage
+
+ex) To Backup `Users`
+
+`$(npm bin)/backup-table cn-north-1/Users s3://dynamodb-backup/Users`
+
 # dynamodb-replicator
 
 [dynamodb-replicator](https://github.com/mapbox/dynamodb-replicator) offers several different mechanisms to manage redundancy and recoverability on [DynamoDB](http://aws.amazon.com/documentation/dynamodb) tables.
